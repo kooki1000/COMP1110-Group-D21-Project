@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       .map(
                         (seg, idx) => `
                         <div class="flex gap-3 p-3 bg-white border border-slate-200 rounded-lg">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full ${getModeBgClass(seg.mode)} flex items-center justify-center">
+                            <div class="shrink-0 w-10 h-10 rounded-full ${getModeBgClass(seg.mode)} flex items-center justify-center">
                                 <i class="fas fa-${seg.icon} text-white"></i>
                             </div>
                             <div class="flex-1">
