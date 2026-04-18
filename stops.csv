@@ -1,0 +1,22 @@
+stop_id,stop_name,campus_location,remark
+S001,HKU Main Campus,Main/Centennial Campus,HKU Shuttle Bus; Citybus; Green Minibus; MTR (short walk)
+S002,HKU Medical Campus,Sassoon Road Campus,HKU Shuttle Bus; Citybus; Green Minibus
+S003,Stanley Ho Sports Centre,Pok Fu Lam,HKU Shuttle Bus
+S004,Jockey Club Student Village IV,Wong Chuk Hang,MTR; Citybus
+S005,HKU MTR Station,Pok Fu Lam,MTR; short walk to campus
+S006,Wong Chuk Hang MTR Station,Wong Chuk Hang,MTR
+S007,Pok Fu Lam Road HKU West Gate,Main Campus,Citybus; Green Minibus
+S008,Pokfield Road Bus Terminus,Near Main Campus,Citybus
+S009,Sha Wan Drive,Pok Fu Lam,Green Minibus; HKU Shuttle Bus
+S010,6 Sassoon Road (Lee Hysan Hall),Sassoon Road Campus,HKU Shuttle Bus
+S011,University Street HKU Stop,Main Campus,Citybus
+S012,Central MTR Station,Central,MTR (transfer)
+S013,Admiralty MTR Station,Admiralty,MTR (transfer)
+S014,Kennedy Town MTR Station,Kennedy Town,MTR; Green Minibus; Citybus
+S015,Aberdeen Bus Terminus,Aberdeen,Citybus; Green Minibus
+S016,St. John's College,Pok Fu Lam,Green Minibus; Citybus; HKU Shuttle Bus
+S017,University Hall,Pok Fu Lam,HKU Shuttle Bus
+S018,Morrison Hall,Jockey Student Village II,HKU Shuttle Bus
+S019,Lady Ho Tung Hall,Jockey Student Village I,HKU Shuttle Bus
+S020,Ricci Hall,Ricci Hall,HKU Shuttle Bus; Green Minibus
+S021,Jockey Club Student Village III,Kennedy Town,MTR; Citybus; Green Minibus

@@ -1,0 +1,59 @@
+segment_id,from_stop_id,from_stop_name,to_stop_id,to_stop_name,mode,duration,cost,route_name
+SEG001,S005,HKU MTR Station,S001,HKU Main Campus,Walking,3,0,Short walk to campus
+SEG002,S001,HKU Main Campus,S005,HKU MTR Station,Walking,3,0,Short walk to campus
+SEG003,S001,HKU Main Campus,S002,HKU Medical Campus,HKU Shuttle Bus,15,2,HKU Shuttle Route A (Main <-> Medical)
+SEG004,S002,HKU Medical Campus,S001,HKU Main Campus,HKU Shuttle Bus,15,2,HKU Shuttle Route A (Main <-> Medical)
+SEG005,S001,HKU Main Campus,S003,Stanley Ho Sports Centre,HKU Shuttle Bus,10,2,HKU Shuttle Route B (Main <-> SHSC)
+SEG006,S003,Stanley Ho Sports Centre,S001,HKU Main Campus,HKU Shuttle Bus,10,2,HKU Shuttle Route B (Main <-> SHSC)
+SEG007,S001,HKU Main Campus,S010,6 Sassoon Road (Lee Hysan Hall),HKU Shuttle Bus,12,2,HKU Shuttle Route C (Main <-> Sassoon Rd)
+SEG008,S010,6 Sassoon Road (Lee Hysan Hall),S001,HKU Main Campus,HKU Shuttle Bus,12,2,HKU Shuttle Route C (Main <-> Sassoon Rd)
+SEG009,S004,Jockey Club Student Village IV,S006,Wong Chuk Hang MTR Station,Walking,5,0,Short walk to MTR
+SEG010,S006,Wong Chuk Hang MTR Station,S004,Jockey Club Student Village IV,Walking,5,0,Short walk to campus
+SEG011,S005,HKU MTR Station,S012,Central MTR Station,MTR,6,8,Island Line (HKU -> Central)
+SEG012,S012,Central MTR Station,S013,Admiralty MTR Station,MTR,3,4,Island Line (Central -> Admiralty)
+SEG013,S013,Admiralty MTR Station,S006,Wong Chuk Hang MTR Station,MTR,12,10,South Island Line (Admiralty -> Wong Chuk Hang)
+SEG014,S006,Wong Chuk Hang MTR Station,S013,Admiralty MTR Station,MTR,12,10,South Island Line (Wong Chuk Hang -> Admiralty)
+SEG015,S013,Admiralty MTR Station,S012,Central MTR Station,MTR,3,4,Island Line (Admiralty -> Central)
+SEG016,S012,Central MTR Station,S005,HKU MTR Station,MTR,6,8,Island Line (Central -> HKU)
+SEG017,S007,Pok Fu Lam Road HKU West Gate,S001,HKU Main Campus,Walking,4,0,Short walk to campus
+SEG018,S001,HKU Main Campus,S007,Pok Fu Lam Road HKU West Gate,Walking,4,0,Short walk to campus
+SEG019,S007,Pok Fu Lam Road HKU West Gate,S002,HKU Medical Campus,Citybus,18,12,Citybus 4
+SEG020,S002,HKU Medical Campus,S007,Pok Fu Lam Road HKU West Gate,Citybus,18,12,Citybus 4
+SEG021,S007,Pok Fu Lam Road HKU West Gate,S004,Jockey Club Student Village IV,Citybus,35,15,Citybus 973
+SEG022,S004,Jockey Club Student Village IV,S007,Pok Fu Lam Road HKU West Gate,Citybus,35,15,Citybus 973
+SEG023,S009,Sha Wan Drive,S001,HKU Main Campus,Green Minibus,8,7,GMB 58
+SEG024,S001,HKU Main Campus,S009,Sha Wan Drive,Green Minibus,8,7,GMB 58
+SEG025,S009,Sha Wan Drive,S002,HKU Medical Campus,Green Minibus,10,7,GMB 28M
+SEG026,S002,HKU Medical Campus,S009,Sha Wan Drive,Green Minibus,10,7,GMB 28M
+SEG027,S008,Pokfield Road Bus Terminus,S001,HKU Main Campus,Citybus,5,10,Citybus 970X
+SEG028,S001,HKU Main Campus,S008,Pokfield Road Bus Terminus,Citybus,5,10,Citybus 970X
+SEG029,S014,Kennedy Town MTR Station,S009,Sha Wan Drive,Green Minibus,12,8,GMB 58A
+SEG030,S009,Sha Wan Drive,S014,Kennedy Town MTR Station,Green Minibus,12,8,GMB 58A
+SEG031,S015,Aberdeen Bus Terminus,S004,Jockey Club Student Village IV,Citybus,10,9,Citybus 30
+SEG032,S004,Jockey Club Student Village IV,S015,Aberdeen Bus Terminus,Citybus,10,9,Citybus 30
+SEG033,S011,University Street HKU Stop,S001,HKU Main Campus,Walking,2,0,Short walk to campus
+SEG034,S001,HKU Main Campus,S011,University Street HKU Stop,Walking,2,0,Short walk to campus
+SEG035,S003,Stanley Ho Sports Centre,S009,Sha Wan Drive,HKU Shuttle Bus,5,2,HKU Shuttle Route B
+SEG036,S009,Sha Wan Drive,S003,Stanley Ho Sports Centre,HKU Shuttle Bus,5,2,HKU Shuttle Route B
+SEG037,S016,St. John's College,S001,HKU Main Campus,Walking,6,0,Short walk (Pok Fu Lam Rd)
+SEG038,S001,HKU Main Campus,S016,St. John's College,Walking,6,0,Short walk (Pok Fu Lam Rd)
+SEG039,S016,St. John's College,S001,HKU Main Campus,HKU Shuttle Bus,8,2,HKU Shuttle (St. John's <-> Main)
+SEG040,S001,HKU Main Campus,S016,St. John's College,HKU Shuttle Bus,8,2,HKU Shuttle (Main <-> St. John's)
+SEG041,S016,St. John's College,S007,Pok Fu Lam Road HKU West Gate,Green Minibus,5,7,GMB 58 / 28M
+SEG042,S007,Pok Fu Lam Road HKU West Gate,S016,St. John's College,Green Minibus,5,7,GMB 58 / 28M
+SEG043,S017,University Hall,S001,HKU Main Campus,Walking,5,0,Short walk
+SEG044,S001,HKU Main Campus,S017,University Hall,Walking,5,0,Short walk
+SEG045,S017,University Hall,S001,HKU Main Campus,HKU Shuttle Bus,7,2,HKU Shuttle (University Hall <-> Main)
+SEG046,S001,HKU Main Campus,S017,University Hall,HKU Shuttle Bus,7,2,HKU Shuttle (Main <-> University Hall)
+SEG047,S018,Morrison Hall,S001,HKU Main Campus,HKU Shuttle Bus,7,2,HKU Shuttle (JV II <-> Main)
+SEG048,S001,HKU Main Campus,S018,Morrison Hall,HKU Shuttle Bus,7,2,HKU Shuttle (Main <-> JV II)
+SEG049,S019,Lady Ho Tung Hall,S001,HKU Main Campus,HKU Shuttle Bus,9,2,HKU Shuttle (JV I <-> Main)
+SEG050,S001,HKU Main Campus,S019,Lady Ho Tung Hall,HKU Shuttle Bus,9,2,HKU Shuttle (Main <-> JV I)
+SEG051,S020,Ricci Hall,S001,HKU Main Campus,Walking,4,0,Short walk
+SEG052,S001,HKU Main Campus,S020,Ricci Hall,Walking,4,0,Short walk
+SEG053,S020,Ricci Hall,S001,HKU Main Campus,HKU Shuttle Bus,6,2,HKU Shuttle (Ricci <-> Main)
+SEG054,S001,HKU Main Campus,S020,Ricci Hall,HKU Shuttle Bus,6,2,HKU Shuttle (Main <-> Ricci)
+SEG055,S021,Jockey Club Student Village III,S014,Kennedy Town MTR Station,Walking,4,0,Short walk to MTR
+SEG056,S014,Kennedy Town MTR Station,S021,Jockey Club Student Village III,Walking,4,0,Short walk to campus
+SEG057,S021,Jockey Club Student Village III,S001,HKU Main Campus,Citybus,15,9,Citybus 43X / 30X
+SEG058,S001,HKU Main Campus,S021,Jockey Club Student Village III,Citybus,15,9,Citybus 43X / 30X
