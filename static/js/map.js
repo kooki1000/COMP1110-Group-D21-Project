@@ -2,7 +2,6 @@
 let map;
 let markers = {};
 let routeLines = [];
-let selectedMarkers = { origin: null, dest: null };
 
 // HKU Main Campus coordinates (approximate center)
 const HKU_CENTER = [22.283, 114.137];
@@ -48,12 +47,12 @@ function loadStopsToMap() {
       let missingCoords = [];
 
       stops.forEach((stop) => {
-        // Use actual coordinates from database
-        let lat = stop.lat;
-        let lng = stop.lng;
+        // Parse coordinates defensively to avoid skipping valid numeric values (e.g. 0)
+        const lat = Number(stop.lat);
+        const lng = Number(stop.lng);
 
-        // Skip stops without coordinates instead of faking them
-        if (!lat || !lng) {
+        // Skip stops with missing or invalid coordinates instead of faking them
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
           missingCoords.push(stop.name);
           return;
         }
