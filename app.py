@@ -17,8 +17,10 @@ try:
     STOPS, SEGMENTS, GRAPH = load_network(STOPS_FILE, SEGMENTS_FILE)
     print(f"Loaded {len(STOPS)} stops and {len(SEGMENTS)} segments")
 except Exception as e:
-    print(f"Error loading network: {e}")
-    STOPS, SEGMENTS, GRAPH = {}, [], {}
+    app.logger.exception("Error loading network during startup")
+    raise RuntimeError(
+        f"Failed to load required network data from {STOPS_FILE} and {SEGMENTS_FILE}"
+    ) from e
 
 
 def get_campus_locations():
