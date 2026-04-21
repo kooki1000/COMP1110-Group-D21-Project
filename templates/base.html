@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>HKU Transport Navigator</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/output.css') }}"
+    />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body
+    class="bg-slate-50 text-slate-800 antialiased overflow-hidden h-screen flex flex-col"
+  >
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 shadow-sm z-20 flex-none">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div class="bg-blue-600 text-white p-2 rounded-lg">
+            <i class="fas fa-university text-xl"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-slate-900 leading-tight">
+              HKU Transport
+            </h1>
+            <p class="text-xs text-slate-500">Campus Route Planner</p>
+          </div>
+        </div>
+        <button
+          id="menu-btn"
+          class="lg:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex overflow-hidden relative">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>
