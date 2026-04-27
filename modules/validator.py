@@ -34,7 +34,11 @@ def _fail(message):
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
+# Used by the CLI journey planner
 VALID_PREFERENCES = {"fastest", "cheapest", "fewest_segments"}
+
+# Used by the Flask API and scorer.py
+VALID_API_PREFERENCES = {"speed", "cost", "balanced"}
 
 # Human-friendly display names used in error messages
 PREFERENCE_DISPLAY = {
@@ -327,7 +331,7 @@ def validate_inputs(origin, destination, preference, stops):
     if not errors and origin == destination:
         errors.append("Origin and destination cannot be the same")
 
-    if preference not in ["speed", "cost", "balanced"]:
+    if preference not in VALID_API_PREFERENCES:
         errors.append("Invalid preference mode")
 
     return {"valid": len(errors) == 0, "errors": errors}
