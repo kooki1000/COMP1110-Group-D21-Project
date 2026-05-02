@@ -94,6 +94,12 @@ body, p, span, div, label, li, h1, h2, h3, h4, h5, h6,
 [data-baseweb="select"] > div > div {
     background-color: transparent !important; 
 }
+/* Ensure typed text and placeholders inside the input are visible */
+[data-baseweb="select"] input {
+    color: #0f172a !important;
+    -webkit-text-fill-color: #0f172a !important;
+    caret-color: #0f172a !important;
+}
 [data-baseweb="popover"] *, [data-baseweb="menu"] *,
 [role="option"], [data-baseweb="option"] {
     background-color: white !important; color: #0f172a !important;
