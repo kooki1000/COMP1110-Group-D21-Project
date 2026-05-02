@@ -22,6 +22,7 @@ if APP_DIR not in sys.path:
 
 st.set_page_config(
     page_title="Smart HKU Transport Navigator",
+    page_icon="🚌",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
