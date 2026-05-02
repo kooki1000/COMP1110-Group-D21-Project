@@ -16,8 +16,9 @@ A web-based route planning tool for navigating between HKU facilities using publ
 5. [File Structure](#file-structure)
 6. [Data File Formats](#data-file-formats)
 7. [How the System Works](#how-the-system-works)
-8. [Network Overview](#network-overview)
-9. [Data Assumptions](#data-assumptions)
+8. [Testing](#testing)
+9. [Network Overview](#network-overview)
+10. [Data Assumptions](#data-assumptions)
 
 ---
 
@@ -93,7 +94,7 @@ Then replace the path in the command above with whatever is printed.
 ## Features
 
 - **Interactive map** showing all 21 HKU stops with real GPS coordinates, with each segment colour-coded by transport mode (MTR, HKU Shuttle Bus, Citybus, Green Minibus, Walking)
-- **Three preference modes**: Fastest, Cheapest, Fewest Transfers
+- **Three preference modes**: Fastest, Cheapest, Fewest Segments
 - **Top 5 routes** ranked and displayed with full segment breakdown (stop sequence, mode, duration, cost, number of segments)
 - **Transport modes**: MTR, Citybus, Green Minibus, HKU Shuttle Bus, Walking
 - **Route visualisation**: selected route drawn on the map as a coloured polyline connecting stops in order
@@ -108,7 +109,7 @@ Then replace the path in the command above with whatever is printed.
 2. **View the map** — all 21 HKU stops will appear as markers.
 3. **Select Origin** — choose your starting stop from the dropdown menu.
 4. **Select Destination** — choose your target stop.
-5. **Choose Preference** — select Fastest, Cheapest, or Fewest Transfers.
+5. **Choose Preference** — select Fastest, Cheapest, or Fewest Segments.
 6. **Click "Find Routes"** — the app will generate and rank candidate journeys.
 7. **View results** — the top 5 routes are shown in a ranked table with full breakdowns.
 8. **Select a route on the map** — click a result to highlight that route on the map.
@@ -118,23 +119,28 @@ Then replace the path in the command above with whatever is printed.
 ## File Structure
 
 ```
-├── app.py                 # Main Streamlit web application and UI logic
-├── network_loader.py      # Reads stops/segments CSVs and builds the adjacency graph
-├── journey_finder.py      # Depth-limited DFS path-finding algorithm
-├── scorer.py              # Scores candidate journeys and ranks by preference mode
-├── validator.py           # Input validation (stop names, preference mode, same stop)
-├── requirements.txt       # All Python dependencies
+├── app.py                        # Main Streamlit web application and UI logic
+├── network_loader.py             # Reads stops/segments CSVs and builds the adjacency graph
+├── journey_finder.py             # Depth-limited DFS path-finding algorithm
+├── scorer.py                     # Scores candidate journeys and ranks by preference mode
+├── validator.py                  # Input validation (stop names, preference mode, same stop)
+├── requirements.txt              # All Python dependencies
 ├── data/
-│   ├── stops.csv          # 21 HKU stops with GPS coordinates and campus location
-│   └── segments.csv       # 66 directed transport segments with mode, duration, cost
-└── README.md              # This file
+│   ├── stops.csv                 # 21 HKU stops with GPS coordinates and campus location
+│   └── segments.csv              # 66 directed transport segments with mode, duration, cost
+├── test_cases/
+│   ├── tester.py                 # Test runner — run with: python test_cases/tester.py
+│   ├── route_test_cases.csv      # 5 valid journey queries with expected ranked results
+│   ├── invalid_query_test_cases.csv  # 6 invalid queries with expected error messages
+│   └── sample_test_output.txt   # Expected console output for a successful test run
+└── README.md                     # This file
 ```
 
 ### What each file does
 
 **`app.py`** — The entry point. Renders the Streamlit interface, handles the map display using Folium or Pydeck, calls the other modules when the user submits a query, and displays ranked results.
 
-**`network_loader.py`** — Reads `stops.csv` and `segments.csv`, validates the data, and builds an in-memory adjacency dictionary (graph) where each stop maps to a list of outgoing segments. This graph is what the path-finder operates on.
+**`network_loader.py`** — Reads `stops.csv` and `segments.csv` from the `data/` folder, validates the data, and builds an in-memory adjacency dictionary (graph) where each stop maps to a list of outgoing segments. This graph is what the path-finder operates on.
 
 **`journey_finder.py`** — Implements a depth-limited depth-first search (DFS). Starting from the origin, it recursively explores adjacent stops, avoids revisiting stops already in the current path, and collects complete paths once the destination is reached. The default depth limit is **8 segments**.
 
@@ -158,12 +164,14 @@ Each row is one named stop in the network.
 | `stop_name` | String | Display name, e.g. `HKU Main Campus` |
 | `campus_location` | String | Campus area, e.g. `Main/Centennial Campus` |
 | `remark` | String | Available transport modes at that stop |
+| `lat` | Float | GPS latitude (optional — stops without coordinates load but show no map marker) |
+| `lng` | Float | GPS longitude (optional) |
 
 Example rows:
 ```
-stop_id,stop_name,campus_location,remark
-S001,HKU Main Campus,Main/Centennial Campus,HKU Shuttle Bus; Citybus; Green Minibus; MTR (short walk)
-S002,HKU Medical Campus,Sassoon Road Campus,HKU Shuttle Bus; Citybus; Green Minibus
+stop_id,stop_name,campus_location,remark,lat,lng
+S001,HKU Main Campus,Main/Centennial Campus,HKU Shuttle Bus; Citybus; Green Minibus; MTR (short walk),22.283314,114.138142
+S002,HKU Medical Campus,Sassoon Road Campus,HKU Shuttle Bus; Citybus; Green Minibus,22.267418,114.128559
 ```
 
 ### `data/segments.csv`
@@ -219,10 +227,68 @@ The system follows this pipeline for every journey query:
 6. Rank by preference mode
    - Fastest:           sort by (duration, cost, segments)
    - Cheapest:          sort by (cost, duration, segments)
-   - Fewest Transfers:  sort by (segments, duration, cost)
+   - Fewest Segments:   sort by (segments, duration, cost)
         ↓
 7. Display top 5 results + draw on map
 ```
+
+---
+
+## Testing
+
+The project includes a standard-library test runner. No extra testing framework is required.
+
+Run from the project root:
+
+```bash
+python test_cases/tester.py
+```
+
+Expected output:
+
+```
+[PASS] DATA | 21 stops | 66 directed segments | all stop pairs reachable
+[PASS] TC1 | 10 min | HK$4 | 3 segments | S021 > S014 > S005 > S001
+[PASS] TC2 | 15 min | HK$2 | 1 segments | S002 > S001
+[PASS] TC3 | 39 min | HK$15 | 2 segments | S004 > S007 > S001
+[PASS] TC4 | 29 min | HK$22 | 5 segments | S004 > S006 > S013 > S012 > S005 > S001
+[PASS] TC5 | 16 min | HK$4 | 2 segments | S018 > S001 > S019
+[PASS] V1 | Please select an origin stop.
+[PASS] V2 | Please select a destination stop.
+[PASS] V3 | Origin 'S999' not found in network.
+[PASS] V4 | Destination 'S999' not found in network.
+[PASS] V5 | Origin and destination are the same (HKU Main Campus). Please choose two different stops.
+[PASS] V6 | 'shortest' is not a valid preference. Choose from: cheapest, fastest, fewest_segments.
+
+All test cases passed.
+```
+
+The full expected output is also saved in `test_cases/sample_test_output.txt`.
+
+### Test files
+
+**`tester.py`** — Runs three groups of checks in sequence: data integrity, route tests, and invalid query tests. Uses only the Python standard library.
+
+**`route_test_cases.csv`** — 5 valid journey queries against the real network, each specifying an origin, destination, preference, and the exact expected top-ranked result (duration, cost, segment count, and stop sequence).
+
+| Test | Scenario | Origin | Destination | Preference |
+|------|----------|--------|-------------|------------|
+| TC1 | Budget route | JC Student Village III | HKU Main Campus | cheapest |
+| TC2 | Fastest route | HKU Medical Campus | HKU Main Campus | fastest |
+| TC3 | Fewest segments | JC Student Village IV | HKU Main Campus | fewest_segments |
+| TC4 | Fastest comparison | JC Student Village IV | HKU Main Campus | fastest |
+| TC5 | Hub transfer | Morrison Hall | Lady Ho Tung Hall | fastest |
+
+**`invalid_query_test_cases.csv`** — 6 invalid queries that must each be rejected by `validate_query`, each specifying the substring expected to appear in the error message.
+
+| Test | Scenario | Expected error contains |
+|------|----------|------------------------|
+| V1 | Missing origin | `origin` |
+| V2 | Missing destination | `destination` |
+| V3 | Unknown origin ID | `not found` |
+| V4 | Unknown destination ID | `not found` |
+| V5 | Same origin and destination | `same` |
+| V6 | Invalid preference string | `valid preference` |
 
 ---
 
@@ -249,5 +315,3 @@ Data sourced from published HKU Shuttle Bus timetables, MTR fare tables, and Cit
 - No service hours or holiday schedules are modelled — all segments are treated as always available.
 - No capacity limits or crowding are modelled.
 - Cross-boundary transport (e.g., to Shenzhen) is not included.
-
-
