@@ -1,3 +1,5 @@
+#Written by Nan Jiang (UID: 3036475225)
+#finds all valid paths using depth first search
 def find_all_journeys(graph, start_id, goal_id, max_depth=8):
     journeys = []
 
