@@ -1,0 +1,14 @@
+[PASS] DATA | 21 stops | 66 directed segments | all stop pairs reachable
+[PASS] TC1 | 10 min | HK$4 | 3 segments | S021 > S014 > S005 > S001
+[PASS] TC2 | 15 min | HK$2 | 1 segments | S002 > S001
+[PASS] TC3 | 39 min | HK$15 | 2 segments | S004 > S007 > S001
+[PASS] TC4 | 29 min | HK$22 | 5 segments | S004 > S006 > S013 > S012 > S005 > S001
+[PASS] TC5 | 16 min | HK$4 | 2 segments | S018 > S001 > S019
+[PASS] V1 | Please select an origin stop.
+[PASS] V2 | Please select a destination stop.
+[PASS] V3 | Origin 'S999' not found in network.
+[PASS] V4 | Destination 'S999' not found in network.
+[PASS] V5 | Origin and destination are the same (HKU Main Campus). Please choose two different stops.
+[PASS] V6 | 'shortest' is not a valid preference. Choose from: cheapest, fastest, fewest_segments.
+
+All test cases passed.

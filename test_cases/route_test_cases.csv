@@ -1,0 +1,6 @@
+test_id,scenario,origin_id,destination_id,preference,expected_duration,expected_cost,expected_segments,expected_stop_ids
+TC1,Budget route from JCSV III to HKU Main Campus,S021,S001,cheapest,10,4,3,S021>S014>S005>S001
+TC2,Fastest route from HKU Medical Campus to Main Campus,S002,S001,fastest,15,2,1,S002>S001
+TC3,Fewest-segment route from JCSV IV to Main Campus,S004,S001,fewest_segments,39,15,2,S004>S007>S001
+TC4,Fastest comparison route from JCSV IV to Main Campus,S004,S001,fastest,29,22,5,S004>S006>S013>S012>S005>S001
+TC5,Route through Main Campus hub from Morrison Hall to Lady Ho Tung Hall,S018,S019,fastest,16,4,2,S018>S001>S019
