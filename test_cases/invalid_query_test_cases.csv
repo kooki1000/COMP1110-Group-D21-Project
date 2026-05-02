@@ -1,0 +1,7 @@
+test_id,scenario,origin_id,destination_id,preference,expected_error_contains
+V1,Missing origin,,S001,fastest,origin
+V2,Missing destination,S001,,fastest,destination
+V3,Unknown origin,S999,S001,fastest,not found
+V4,Unknown destination,S001,S999,fastest,not found
+V5,Same origin and destination,S001,S001,fastest,same
+V6,Invalid preference,S001,S002,shortest,valid preference
