@@ -57,3 +57,11 @@ SEG055,S021,Jockey Club Student Village III,S014,Kennedy Town MTR Station,Walkin
 SEG056,S014,Kennedy Town MTR Station,S021,Jockey Club Student Village III,Walking,4,0,Short walk to campus
 SEG057,S021,Jockey Club Student Village III,S001,HKU Main Campus,Citybus,15,9,Citybus 43X / 30X
 SEG058,S001,HKU Main Campus,S021,Jockey Club Student Village III,Citybus,15,9,Citybus 43X / 30X
+SEG059,S015,Aberdeen Bus Terminus,S006,Wong Chuk Hang MTR Station,Citybus,8,7,Citybus 72/72A
+SEG060,S006,Wong Chuk Hang MTR Station,S015,Aberdeen Bus Terminus,Citybus,8,7,Citybus 72/72A
+SEG061,S016,St. John's College,S009,Sha Wan Drive,Green Minibus,8,7,GMB 28M / 58
+SEG062,S009,Sha Wan Drive,S016,St. John's College,Green Minibus,8,7,GMB 28M / 58
+SEG063,S010,6 Sassoon Road (Lee Hysan Hall),S002,HKU Medical Campus,Walking,3,0,Short walk on Sassoon Road
+SEG064,S002,HKU Medical Campus,S010,6 Sassoon Road (Lee Hysan Hall),Walking,3,0,Short walk on Sassoon Road
+SEG065,S014,Kennedy Town MTR Station,S005,HKU MTR Station,MTR,3,4,Island Line (Kennedy Town -> HKU)
+SEG066,S005,HKU MTR Station,S014,Kennedy Town MTR Station,MTR,3,4,Island Line (HKU -> Kennedy Town)
