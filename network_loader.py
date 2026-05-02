@@ -16,8 +16,18 @@ import os
 # ── Internal helpers ───────────────────────────────────────────────────────────
 
 def _strip(row):
-    """Strip whitespace and carriage-return from every value in a CSV row."""
-    return {k.strip(): v.strip() for k, v in row.items()}
+    """Strip whitespace from every key/value in a CSV row.
+
+    csv.DictReader can emit None as a key (extra columns beyond the header)
+    or None as a value (short rows with fewer fields than headers).  We skip
+    None keys entirely and coerce None values to empty strings before
+    stripping, so callers never receive None from this function.
+    """
+    return {
+        k.strip(): (v.strip() if v is not None else "")
+        for k, v in row.items()
+        if k is not None
+    }
 
 
 # ── Loaders ────────────────────────────────────────────────────────────────────
@@ -162,7 +172,9 @@ def load_segments(filepath, valid_stop_ids=None):
         raise ValueError(f"Segments file is empty or has no valid rows: {filepath}")
 
     if skipped:
-        print(f"[Warning] Skipped {len(skipped)} malformed segment row(s).")
+        print(f"[Warning] Skipped {len(skipped)} malformed segment row(s):")
+        for row_num, reason in skipped:
+            print(f"          Row {row_num}: {reason}")
 
     return segments
 
