@@ -243,6 +243,13 @@ Run from the project root:
 ```bash
 python test_cases/tester.py
 ```
+The tests cover:
+
+- network size and data consistency
+- reachability between stop pairs within the depth limit
+- report-based route scenarios
+- expected top-ranked route outputs
+- invalid query handling
 
 Expected output:
 
