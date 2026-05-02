@@ -267,22 +267,11 @@ The full expected output is also saved in `test_cases/sample_test_output.txt`.
 
 | Test | Scenario | Origin | Destination | Preference |
 |------|----------|--------|-------------|------------|
-| TC1 | Budget route | JC Student Village III | HKU Main Campus | cheapest |
-| TC2 | Fastest route | HKU Medical Campus | HKU Main Campus | fastest |
-| TC3 | Fewest segments | JC Student Village IV | HKU Main Campus | fewest_segments |
-| TC4 | Fastest comparison | JC Student Village IV | HKU Main Campus | fastest |
-| TC5 | Hub transfer | Morrison Hall | Lady Ho Tung Hall | fastest |
 
 **`invalid_query_test_cases.csv`** — 6 invalid queries that must each be rejected by `validate_query`, each specifying the substring expected to appear in the error message.
 
 | Test | Scenario | Expected error contains |
 |------|----------|------------------------|
-| V1 | Missing origin | `origin` |
-| V2 | Missing destination | `destination` |
-| V3 | Unknown origin ID | `not found` |
-| V4 | Unknown destination ID | `not found` |
-| V5 | Same origin and destination | `same` |
-| V6 | Invalid preference string | `valid preference` |
 
 ---
 
