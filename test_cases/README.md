@@ -12,4 +12,4 @@ Files:
 
 - `route_test_cases.csv`: expected top-ranked routes for the report scenarios.
 - `invalid_query_test_cases.csv`: validation checks for incomplete or invalid route searches.
-- `run_test_cases.py`: executes the tests against the current project data.
+- `tester.py`: executes the tests against the current project data.
